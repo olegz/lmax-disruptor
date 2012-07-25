@@ -8,6 +8,12 @@ apply plugin: 'java'
 sourceCompatibility=1.7
 targetCompatibility=1.7
 
+configurations {
+  all*.exclude group: "commons-logging"
+  all*.exclude module: "slf4j-log4j12"
+  all*.exclude module: "groovy-all", version: "1.8.0-beta-3-SNAPSHOT"
+}
+
 repositories {
     maven { url 'https://repo.springsource.org/libs-snapshot' }
     maven { url 'http://www.gridgainsystems.com/maven2' }
@@ -25,6 +31,13 @@ dependencies {
     compile "org.slf4j:slf4j-api:1.6.4"
     runtime "org.slf4j:jcl-over-slf4j:1.6.4"
     runtime "ch.qos.logback:logback-classic:0.9.30"
+    
+    testCompile "org.spockframework:spock-core:0.5-groovy-1.8"
+    testCompile "org.hamcrest:hamcrest-all:1.1"
+    testCompile "org.jmock:jmock-junit4:2.5.1"
+    testCompile "org.jmock:jmock-legacy:2.5.1"
+    testCompile "com.google.caliper:caliper:0.5-rc1"
+            
 }
 
 task wrapper(type: Wrapper) {
