@@ -1,0 +1,33 @@
+description = 'LMAX Disruptor'
+
+group = 'LMAX'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+sourceCompatibility=1.7
+targetCompatibility=1.7
+
+repositories {
+    maven { url 'https://repo.springsource.org/libs-snapshot' }
+    maven { url 'http://www.gridgainsystems.com/maven2' }
+    maven { url 'http://snapshots.jboss.org/maven2'}
+    
+}
+
+dependencies {
+ 
+    // spring integration libraries
+    compile "org.springframework.integration:spring-integration-core:2.2.0.BUILD-SNAPSHOT"
+
+   
+    // other dependencies
+    compile "org.slf4j:slf4j-api:1.6.4"
+    runtime "org.slf4j:jcl-over-slf4j:1.6.4"
+    runtime "ch.qos.logback:logback-classic:0.9.30"
+}
+
+task wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+}
+
